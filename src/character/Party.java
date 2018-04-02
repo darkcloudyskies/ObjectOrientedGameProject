@@ -34,6 +34,16 @@ public class Party
         this.party = party;
     }
 
+    public boolean isAlive()
+    {
+        boolean isAlive = true;
+        for(GameCharacter character : party)
+        {
+            isAlive &= character.isAlive();
+        }
+        return isAlive;
+    }
+
     private void getNameFromPlayer()
     {
         Scanner input = new Scanner(System.in);
@@ -45,6 +55,7 @@ public class Party
     private void getCharactersFromPlayer()
     {
         Scanner input = new Scanner(System.in);
+        party = new ArrayList<GameCharacter>();
         System.out.println("Please enter the first character in this party.");
         party.add(new GameCharacter());
         while(true)
@@ -64,6 +75,16 @@ public class Party
                 System.out.println("Invalid answer.");
             }
         }
+    }
+
+    @Override public String toString()
+    {
+        String response = "";
+        for(GameCharacter character : party)
+        {
+            response += character.toString() + " ";
+        }
+        return response;
     }
 
 }

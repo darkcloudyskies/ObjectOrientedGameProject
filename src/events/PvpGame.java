@@ -11,6 +11,7 @@ public class PvpGame extends GameMode
     public void startGame()
     {
         ArrayList<Party> parties = getPartiesFromPlayer();
+        Battle.startBattle(parties);
     }
 
     private ArrayList<Party> getPartiesFromPlayer()

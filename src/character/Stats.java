@@ -9,6 +9,9 @@ public class Stats
     private float health;
     private float mana;
 
+    private float maxHealth;
+    private float maxMana;
+
     private int luck;
     private int charisma;
 
@@ -21,9 +24,22 @@ public class Stats
     private float magicDefence;
     private float magicAttack;
 
-    public void add(Stats first, Stats second)
+    public static void add(Stats first, Stats second)
     {
+        first.setMaxHealth(first.getMaxHealth()+second.getMaxHealth());
+        first.setMaxMana(first.getMaxMana()+second.getMaxMana());
 
+        first.setLuck(first.getLuck()+second.getLuck());
+        first.setCharisma(first.getCharisma()+second.getCharisma());
+
+        first.setAgility(first.getAgility()+second.getAgility());
+        first.setIntelligence(first.getIntelligence()+second.getIntelligence());
+        first.setStrength(first.getStrength()+second.getStrength());
+
+        first.setMagicAttack(first.getMagicAttack()+second.getMagicAttack());
+        first.setMagicDefence(first.getMagicDefence()+second.getMagicDefence());
+        first.setPhysicalAttack(first.getPhysicalAttack()+second.getPhysicalAttack());
+        first.setPhysicalDefence(first.getPhysicalDefence()+second.getPhysicalDefence());
     }
 
     public int getLevel()
@@ -46,24 +62,24 @@ public class Stats
         this.experience = experience;
     }
 
-    public float getHealth()
+    public float getMaxHealth()
     {
-        return health;
+        return maxHealth;
     }
 
-    public void setHealth(float health)
+    public void setMaxHealth(float maxHealth)
     {
-        this.health = health;
+        this.maxHealth = maxHealth;
     }
 
-    public float getMana()
+    public float getMaxMana()
     {
-        return mana;
+        return maxMana;
     }
 
-    public void setMana(float mana)
+    public void setMaxMana(float maxMana)
     {
-        this.mana = mana;
+        this.maxMana = maxMana;
     }
 
     public int getLuck()
@@ -154,5 +170,25 @@ public class Stats
     public void setMagicAttack(float magicAttack)
     {
         this.magicAttack = magicAttack;
+    }
+
+    public float getHealth()
+    {
+        return health;
+    }
+
+    public void setHealth(float health)
+    {
+        this.health = health;
+    }
+
+    public float getMana()
+    {
+        return mana;
+    }
+
+    public void setMana(float mana)
+    {
+        this.mana = mana;
     }
 }

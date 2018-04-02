@@ -11,8 +11,13 @@ public class WarriorClass extends GameClass
     {
         stats = new Stats();
 
-        stats.setHealth(175);
-        stats.setMana(25);
+
+
+        stats.setMaxHealth(175);
+        stats.setMaxMana(25);
+
+        stats.setHealth(stats.getMaxHealth());
+        stats.setMana(stats.getMaxMana());
 
         stats.setLuck(3);
         stats.setCharisma(3);
@@ -28,8 +33,8 @@ public class WarriorClass extends GameClass
 
         statMultiplier = new Stats();
 
-        statMultiplier.setHealth(20);
-        statMultiplier.setMana(5);
+        statMultiplier.setMaxHealth(20);
+        statMultiplier.setMaxMana(5);
 
         statMultiplier.setLuck(1);
         statMultiplier.setCharisma(1);

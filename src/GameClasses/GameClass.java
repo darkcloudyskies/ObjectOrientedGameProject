@@ -36,4 +36,11 @@ public abstract class GameClass
         }
 
     }
+
+    public void levelUp()
+    {
+        Stats.add(stats,statMultiplier);
+        stats.setHealth(stats.getMaxHealth());
+        stats.setMana(stats.getMaxMana());
+    }
 }

@@ -11,8 +11,11 @@ public class MageClass extends GameClass
     {
         stats = new Stats();
 
-        stats.setHealth(75);
-        stats.setMana(125);
+        stats.setMaxHealth(75);
+        stats.setMaxMana(125);
+
+        stats.setHealth(stats.getMaxHealth());
+        stats.setMana(stats.getMaxMana());
 
         stats.setLuck(3);
         stats.setCharisma(3);
@@ -28,8 +31,8 @@ public class MageClass extends GameClass
 
         statMultiplier = new Stats();
 
-        statMultiplier.setHealth(5);
-        statMultiplier.setMana(20);
+        statMultiplier.setMaxHealth(5);
+        statMultiplier.setMaxMana(20);
 
         statMultiplier.setLuck(1);
         statMultiplier.setCharisma(1);
