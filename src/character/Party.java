@@ -79,12 +79,7 @@ public class Party
 
     @Override public String toString()
     {
-        String response = "";
-        for(GameCharacter character : party)
-        {
-            response += character.toString() + " ";
-        }
-        return response;
+        return party.toString();
     }
 
 }

@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public abstract class GameClass
 {
-    public Stats stats;
-    public Stats statMultiplier;
+    protected Stats stats;
+    protected Stats statMultiplier;
 
     public abstract Stats getStats();
     public abstract void specialMove();

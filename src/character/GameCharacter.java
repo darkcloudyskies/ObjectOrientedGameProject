@@ -17,7 +17,7 @@ public class GameCharacter
         Scanner input = new Scanner(System.in);
 
         System.out.println("What is the name of your character?");
-        String name = input.nextLine();
+        name = input.nextLine();
 
         gameClass = GameClass.getGameClassFromPlayer();
     }
@@ -29,7 +29,7 @@ public class GameCharacter
 
     public boolean isAlive()
     {
-        return gameClass.stats.getHealth() > 0;
+        return gameClass.getStats().getHealth() > 0;
     }
 
     public String getName()
@@ -60,6 +60,7 @@ public class GameCharacter
         enemyStats.setHealth(Math.max((enemyStats.getHealth()-damage),0));
 
         System.out.println("Did " + damage + " damage!");
+        System.out.println(enemy.getName() + " has " + enemyStats.getHealth() + " health left!");
     }
 
     @Override
@@ -71,7 +72,7 @@ public class GameCharacter
     @Override
     public boolean equals(Object other)
     {
-        return this.name .equals(((GameCharacter)other).name);
+        return this.name.equals(((GameCharacter)other).name);
     }
 
 

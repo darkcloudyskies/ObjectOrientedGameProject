@@ -12,6 +12,7 @@ public class Battle
     {
         ArrayList<GameCharacter> characters = getCharactersFromParties(parties);
 
+        outerLoop:
         while(true)
         {
             for(GameCharacter character : characters)
@@ -19,8 +20,13 @@ public class Battle
                 if(numPartiesAlive(parties)==1)
                 {
                     Party winner = getFirstPartyAlive(parties);
-                    System.out.println(winner.getName() + " has won the game!");
-                    break;
+                    System.out.println(winner.getName() + " have won the game!");
+                    break outerLoop;
+                }
+                else if(numPartiesAlive(parties)<1)
+                {
+                    System.out.println("Somehow all parties are dead, nobody won!");
+                    break outerLoop;
                 }
                 if(!character.isAlive())
                 {
@@ -45,7 +51,7 @@ public class Battle
                 characters.add(character);
             }
         }
-        return new ArrayList<GameCharacter>();
+        return characters;
     }
 
     private static int numPartiesAlive(ArrayList<Party> parties)
@@ -104,6 +110,7 @@ public class Battle
             {
                 GameCharacter enemy = enemies.get(enemies.indexOf(new GameCharacter(target)));
                 character.attack(enemy);
+                break;
             }
             else
             {

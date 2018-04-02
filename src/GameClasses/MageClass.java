@@ -4,9 +4,6 @@ import character.Stats;
 
 public class MageClass extends GameClass
 {
-    private Stats stats;
-    private Stats statMultiplier;
-
     public MageClass()
     {
         stats = new Stats();

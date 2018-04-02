@@ -4,9 +4,6 @@ import character.Stats;
 
 public class RogueClass extends GameClass
 {
-    private Stats stats;
-    private Stats statMultiplier;
-
     public RogueClass()
     {
         stats = new Stats();

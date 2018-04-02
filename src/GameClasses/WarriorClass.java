@@ -4,9 +4,6 @@ import character.Stats;
 
 public class WarriorClass extends GameClass
 {
-    private Stats stats;
-    private Stats statMultiplier;
-
     public WarriorClass()
     {
         stats = new Stats();
