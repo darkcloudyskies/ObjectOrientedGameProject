@@ -37,6 +37,7 @@ public abstract class GameClass
 
     }
 
+    //
     public void levelUp()
     {
         Stats.add(stats,statMultiplier);

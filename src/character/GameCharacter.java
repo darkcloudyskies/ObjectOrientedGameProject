@@ -2,6 +2,8 @@ package character;
 
 import GameClasses.GameClass;
 import equipment.*;
+import equipment.weapons.Weapon;
+import equipment.weapons.WeaponFactory;
 
 import java.util.Scanner;
 
@@ -11,6 +13,7 @@ public class GameCharacter
 
     private EquipmentSet equipment;
     private GameClass gameClass;
+    private Weapon weapon;
 
     public GameCharacter()
     {
@@ -20,6 +23,8 @@ public class GameCharacter
         name = input.nextLine();
 
         gameClass = GameClass.getGameClassFromPlayer();
+        weapon = new WeaponFactory().makeNewRandomWeapon(gameClass);
+        System.out.println(name + " received the weapon " + weapon.getName());
     }
 
     public GameCharacter(String name)
