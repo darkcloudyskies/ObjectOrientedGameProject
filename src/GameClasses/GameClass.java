@@ -1,6 +1,7 @@
 package GameClasses;
 
 import character.Stats;
+import dialogue.Typewriter;
 
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public abstract class GameClass
     {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Which class do you want to be? Choices are Mage, Rogue, Warrior.");
+        Typewriter.type("Which class do you want to be? Choices are Mage, Rogue, Warrior.");
 
         while(true)
         {

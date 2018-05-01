@@ -8,7 +8,7 @@ public class RogueClass extends GameClass
     {
         stats = new Stats();
 
-        stats.setMaxHealth(125);
+        stats.setMaxHealth(175);
         stats.setMaxMana(75);
 
         stats.setHealth(stats.getMaxHealth());

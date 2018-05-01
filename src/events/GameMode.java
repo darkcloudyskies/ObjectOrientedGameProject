@@ -1,5 +1,8 @@
 package events;
 
+import com.sun.xml.internal.txw2.TypedXmlWriter;
+import dialogue.Typewriter;
+
 import java.util.Scanner;
 
 public abstract class GameMode
@@ -10,7 +13,7 @@ public abstract class GameMode
     {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Which gamemode do you wish to play? Choices are PVP or PVE");
+       Typewriter.type("Which gamemode do you wish to play? Choices are PVP or PVE");
 
         while(true)
         {
@@ -22,7 +25,7 @@ public abstract class GameMode
                 case "PVP":
                     return new PvpGame();
             }
-            System.out.println("Please enter a correct gamemode, acceptable modes are PVP or PVE");
+           Typewriter.type("Please enter a correct gamemode, acceptable modes are PVP or PVE");
         }
     }
 }

@@ -2,6 +2,7 @@ package events;
 
 import character.GameCharacter;
 import character.Party;
+import dialogue.Typewriter;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -22,7 +23,7 @@ public class PvpGame extends GameMode
         parties.add(new Party());
         while(true)
         {
-            System.out.println("Would you like to add another party? Y/N");
+            Typewriter.type("Would you like to add another party? Y/N");
             String answer = input.nextLine().trim().toUpperCase();
             if(answer.equals("Y")||answer.equals("YES"))
             {
@@ -34,7 +35,7 @@ public class PvpGame extends GameMode
             }
             else
             {
-                System.out.println("Invalid answer.");
+                Typewriter.type("Invalid answer.");
             }
         }
         return parties;

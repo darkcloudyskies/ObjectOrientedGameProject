@@ -1,15 +1,22 @@
 package events;
 
+import character.BestowerOfWeapons;
 import character.GameCharacter;
 import character.Party;
+import com.sun.xml.internal.txw2.TypedXmlWriter;
+import dialogue.Typewriter;
+import equipment.weapons.WeaponFactory;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Battle
 {
+    private static BestowerOfWeapons bestowerOfWeapons;
     public static void startBattle(ArrayList<Party> parties)
     {
+        bestowerOfWeapons = new BestowerOfWeapons(3);
         ArrayList<GameCharacter> characters = getCharactersFromParties(parties);
 
         outerLoop:
@@ -20,12 +27,12 @@ public class Battle
                 if(numPartiesAlive(parties)==1)
                 {
                     Party winner = getFirstPartyAlive(parties);
-                    System.out.println(winner.getName() + " have won the game!");
+                    Typewriter.typeFast("The " + winner.getName() + " party has won the game!");
                     break outerLoop;
                 }
                 else if(numPartiesAlive(parties)<1)
                 {
-                    System.out.println("Somehow all parties are dead, nobody won!");
+                    Typewriter.typeFast("Somehow all parties are dead, nobody won!");
                     break outerLoop;
                 }
                 if(!character.isAlive())
@@ -33,7 +40,7 @@ public class Battle
                     continue;
                 }
 
-                System.out.println("It is currently " + character.getName() + "'s turn.");
+                Typewriter.typeFast("It is currently " + character.getName() + "'s turn.");
 
                 getAttackFromPlayer(character,parties);
 
@@ -102,19 +109,39 @@ public class Battle
 
         while(true)
         {
-            System.out.println("Who would you like to attack? Currently alive enemies are:");
-            System.out.println(enemyParties.toString());
+            Typewriter.typeFast("Who would you like to attack? Currently alive enemies are:");
+            Typewriter.typeFast(enemyParties.toString());
             String target = input.nextLine().trim();
 
             if(enemies.contains(new GameCharacter(target)))
             {
+                bestowerOfWeapons.counterTick();
+                if (bestowerOfWeapons.isTheTimeRipe()){
+                    if (character.getWeapon() == null) {
+                        character.setWeapon(bestowerOfWeapons.bestowWeaponToPlayer(character.getGameClass()));
+                        Typewriter.typeSlow("\n.....Oh? The GREAT BESTOWER HAS ARRIVED!");
+                        Typewriter.type(character.getName() + " received the " +
+                                character.getWeapon().getName() + " from the GREAT BESTOWER! Attack damage increased!\n");
+                    }else{
+                        bestowerOfWeapons.resetCounter();
+                    }
+                }
                 GameCharacter enemy = enemies.get(enemies.indexOf(new GameCharacter(target)));
                 character.attack(enemy);
+
+                if (character.getWeapon() != null) {
+                    character.getWeapon().detoriate();
+                    if (character.getWeapon().getDurability() == 0) {
+                        Typewriter.type("Oh no! " + character.getName() + "\'s " +
+                                character.getWeapon().getName() + " broke! Attack damage reduced.");
+                        character.destroyWeapon();
+                    }
+                }
                 break;
             }
             else
             {
-                System.out.println("Target not found!");
+                Typewriter.typeFast("Target not found!");
             }
         }
     }

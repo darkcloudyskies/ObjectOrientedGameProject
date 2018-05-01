@@ -8,7 +8,7 @@ public class MageClass extends GameClass
     {
         stats = new Stats();
 
-        stats.setMaxHealth(75);
+        stats.setMaxHealth(175);
         stats.setMaxMana(125);
 
         stats.setHealth(stats.getMaxHealth());

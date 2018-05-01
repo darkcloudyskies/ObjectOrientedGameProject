@@ -1,5 +1,8 @@
 package character;
 
+import dialogue.Typewriter;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -48,7 +51,7 @@ public class Party
     {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Please enter the name of this party.");
+        Typewriter.type("Please enter the name of this party.");
         this.name = input.nextLine().trim();
     }
 
@@ -56,11 +59,11 @@ public class Party
     {
         Scanner input = new Scanner(System.in);
         party = new ArrayList<GameCharacter>();
-        System.out.println("Please enter the first character in this party.");
+        Typewriter.type("Please enter the first character in this party.");
         party.add(new GameCharacter());
         while(true)
         {
-            System.out.println("Do you wish to add another character to this party? Y/N");
+           Typewriter.type("Do you wish to add another character to this party? Y/N");
             String answer = input.nextLine().trim().toUpperCase();
             if(answer.equals("Y")||answer.equals("YES"))
             {
@@ -72,7 +75,7 @@ public class Party
             }
             else
             {
-                System.out.println("Invalid answer.");
+                Typewriter.type("Invalid answer.");
             }
         }
     }

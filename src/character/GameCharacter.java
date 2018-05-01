@@ -1,6 +1,7 @@
 package character;
 
 import GameClasses.GameClass;
+import dialogue.Typewriter;
 import equipment.*;
 import equipment.weapons.Weapon;
 import equipment.weapons.WeaponFactory;
@@ -19,12 +20,12 @@ public class GameCharacter
     {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("What is the name of your character?");
+        Typewriter.typeFast("What is the name of your character?");
         name = input.nextLine();
 
         gameClass = GameClass.getGameClassFromPlayer();
         weapon = new WeaponFactory().makeNewRandomWeapon(gameClass);
-        System.out.println(name + " received the weapon " + weapon.getName());
+        Typewriter.typeFast(name + " received the weapon " + weapon);
     }
 
     public GameCharacter(String name)
@@ -47,6 +48,14 @@ public class GameCharacter
         return new Stats();
     }
 
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void destroyWeapon(){
+        this.weapon = null;
+    }
+
     public GameClass getGameClass()
     {
         return gameClass;
@@ -57,11 +66,14 @@ public class GameCharacter
         Stats curreStats = this.getGameClass().getStats();
         Stats enemyStats = enemy.getGameClass().getStats();
 
+
         int damage = 0;
+        int weaponDamage = (this.weapon != null ? this.weapon.getDamage() : 0);
+        damage += Math.max(curreStats.getMagicAttack() - enemyStats.getMagicDefence(),1);
+        damage += Math.max(curreStats.getPhysicalAttack() - enemyStats.getPhysicalDefence(),1);
+        damage += weaponDamage;
 
-        damage += Math.max(curreStats.getMagicAttack() - enemyStats.getMagicDefence(),0);
-        damage += Math.max(curreStats.getPhysicalAttack() - enemyStats.getPhysicalDefence(),0);
-
+        damage = (int)(damage * ((70 + (Math.random() * 30))/100.0));
         enemyStats.setHealth(Math.max((enemyStats.getHealth()-damage),0));
 
         System.out.println("Did " + damage + " damage!");
@@ -81,4 +93,7 @@ public class GameCharacter
     }
 
 
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
 }
