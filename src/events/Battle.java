@@ -113,7 +113,7 @@ public class Battle
             Typewriter.typeFast(enemyParties.toString());
             String target = input.nextLine().trim();
 
-            if(enemies.contains(new GameCharacter(target)))
+            if(enemies.contains(new GameCharacter(target)) && enemies.get(enemies.indexOf(new GameCharacter(target))).isAlive())
             {
                 bestowerOfWeapons.counterTick();
                 if (bestowerOfWeapons.isTheTimeRipe()){

@@ -39,10 +39,12 @@ public class Party
 
     public boolean isAlive()
     {
-        boolean isAlive = true;
+        boolean isAlive = false;
         for(GameCharacter character : party)
         {
-            isAlive &= character.isAlive();
+            if (character.isAlive()){
+                isAlive = true;
+            }
         }
         return isAlive;
     }
@@ -82,7 +84,15 @@ public class Party
 
     @Override public String toString()
     {
-        return party.toString();
+        String partyList = "";
+
+        int counter = 0;
+        for (GameCharacter character : party){
+            if (character.isAlive()) {
+                partyList += (counter++ > 0 ? ", " : "") + character.toString();
+            }
+        }
+        return partyList;
     }
 
 }
