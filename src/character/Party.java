@@ -11,10 +11,10 @@ public class Party
     private String name;
     private ArrayList<GameCharacter> party;
 
-    public Party()
+    public Party(int maxPartyMembers)
     {
         getNameFromPlayer();
-        getCharactersFromPlayer();
+        getCharactersFromPlayer(maxPartyMembers);
     }
 
     public String getName()
@@ -57,28 +57,15 @@ public class Party
         this.name = input.nextLine().trim();
     }
 
-    private void getCharactersFromPlayer()
+    private void getCharactersFromPlayer(int maxPartyMembers)
     {
-        Scanner input = new Scanner(System.in);
         party = new ArrayList<GameCharacter>();
         Typewriter.type("Please enter the first character in this party.");
         party.add(new GameCharacter());
-        while(true)
-        {
-           Typewriter.type("Do you wish to add another character to this party? Y/N");
-            String answer = input.nextLine().trim().toUpperCase();
-            if(answer.equals("Y")||answer.equals("YES"))
-            {
-                party.add(new GameCharacter());
-            }
-            else if(answer.equals("N")||answer.equals("NO"))
-            {
-                break;
-            }
-            else
-            {
-                Typewriter.type("Invalid answer.");
-            }
+
+        for (int counter = 1; counter < maxPartyMembers; counter++){
+            System.out.println("Add party member number " + (counter + 1));
+            party.add(new GameCharacter());
         }
     }
 
