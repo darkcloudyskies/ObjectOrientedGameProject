@@ -36,11 +36,7 @@ public class Weapon
 
     @Override
     public String toString() {
-        return "Weapon{" +
-                "weaponGameClass=" + weaponGameClass.getClass().getSimpleName() +
-                ", name='" + name + '\'' +
-                ", damage=" + damage +
-                '}';
+        return this.getName();
     }
 
     public static void main(String[] args) {
