@@ -4,12 +4,13 @@ import character.GameCharacter;
 import character.Party;
 import character.Stats;
 import dialogue.Typewriter;
+import dialogue.Typewriter;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BattleMode {
-	private static int health1 = 115, health2 = 80, health3 = 80;
+	private static int health1 = 220, health2 = 180, health3 = 180;
 	private static int attack1 = 15, attack2 = 10, attack3 = 10;
 
 	
@@ -102,7 +103,7 @@ public class BattleMode {
 			if(target.equals("ENEMY1"))
 			{
 				//Player attack
-				attack = currentStats.getMagicAttack() + currentStats.getPhysicalAttack(); //adds physical and magic attack damages
+				attack = character.attack(); //adds physical and magic attack damages
 				BattleMode.health1 -= attack;
 				Typewriter.type("You did " + attack + " damage! Enemy health = " + BattleMode.health1);
 				
@@ -115,7 +116,7 @@ public class BattleMode {
 			else if(target.equals("ENEMY2"))
 			{
 				//Player attack
-				attack = currentStats.getMagicAttack() + currentStats.getPhysicalAttack(); //adds physical and magic attack damages
+				attack = character.attack(); //adds physical and magic attack damages
 				BattleMode.health2 -= attack;
 				Typewriter.type("You did " + attack + " damage! Enemy health = " + BattleMode.health2);
 				
@@ -128,7 +129,7 @@ public class BattleMode {
 			else if(target.equals("ENEMY3"))
 			{
 				//Player attack
-				attack = currentStats.getMagicAttack() + currentStats.getPhysicalAttack(); //adds physical and magic attack damages
+				attack = character.attack(); //adds physical and magic attack damages
 				BattleMode.health3 -= attack;
 				System.out.println("You did " + attack + " damage! Enemy health = " + BattleMode.health3);
 				

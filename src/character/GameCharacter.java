@@ -61,6 +61,15 @@ public class GameCharacter
         return gameClass;
     }
 
+    public int attack(){
+        Stats currentStats = this.getGameClass().getStats();
+
+        int damage = (int)(currentStats.getMagicAttack() + currentStats.getPhysicalAttack());
+        damage += (this.weapon != null ? this.weapon.getDamage() : 0);
+
+        return damage;
+    }
+
     public void attack(GameCharacter enemy)
     {
         Stats curreStats = this.getGameClass().getStats();
